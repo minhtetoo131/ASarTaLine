@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ASarTaLine</string>
+    <string name="confirm_no">no</string>
+    <string name="confirm_yes">yes</string>
+    <string name="prompt_ok">ok</string>
+    <string name="msg_generic_no_data">no data to display</string>
+</resources>
