@@ -12,6 +12,8 @@
     <color name="white_full">#FFFFFF</color>
     <color name="black_full">#000000</color>
 
+    <color name="black">#444444</color>
+
     <color name="white">#FAFAFA</color>
     <color name="green">#42f480</color>
     <color name="blue_text">#202D51</color>

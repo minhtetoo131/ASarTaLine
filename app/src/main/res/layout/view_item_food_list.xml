@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="@dimen/margin_xlarge"
+    android:paddingRight="@dimen/margin_xlarge"
+    android:paddingBottom="@dimen/margin_xlarge"
+    android:clipToPadding="true"
+    android:background="@color/white">
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardElevation="@dimen/margin_medium_2"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+
+            <ImageView
+                android:id="@+id/iv_restaurant"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/romantic_restaurant"
+                android:scaleType="centerCrop"
+                />
+
+            <TextView
+                android:id="@+id/tv_restaurant_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/casa_pop"
+                android:textSize="@dimen/text_heading_1x"
+                android:textColor="@color/primary_text"
+                android:layout_toRightOf="@id/iv_restaurant"
+                android:layout_marginLeft="@dimen/margin_medium_2"
+                android:layout_marginTop="@dimen/margin_medium_2"/>
+
+            <TextView
+                android:id="@+id/tv_restaurant_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_restaurant_name"
+                android:text="Cafe, Italian, Chinese"
+                android:layout_alignLeft="@id/tv_restaurant_name"
+                android:textSize="@dimen/text_regular_2x"
+                android:textColor="@color/secondary_text"/>
+
+            <TextView
+                android:id="@+id/tv_meal_cost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cost $300 for one"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/text_regular_2x"
+                android:layout_below="@id/tv_restaurant_type"
+                android:layout_toRightOf="@id/iv_restaurant"
+                android:layout_alignLeft="@id/tv_restaurant_name"/>
+
+            <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialRatingBar.RatingBar"
+                android:layout_alignBottom="@id/iv_restaurant"
+                android:layout_toRightOf="@id/iv_restaurant"
+                android:layout_alignLeft="@id/tv_restaurant_name"/>
+
+            <TextView
+                android:id="@+id/lbl_view_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View details"
+                android:textColor="@color/accent"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="@dimen/margin_medium_2"
+                android:layout_marginBottom="@dimen/margin_medium_2"
+                />
+
+            <TextView
+                android:id="@+id/tv_food_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4.6"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_regular_3x"
+                android:background="@color/accent"
+                android:padding="@dimen/margin_medium_2"
+                android:layout_alignParentRight="true"
+                android:paddingTop="@dimen/margin_xlarge_n"
+                android:paddingRight="@dimen/margin_xlarge_n"/>
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+
+</RelativeLayout>
