@@ -10,7 +10,7 @@ public class AppConstants {
 
     public static final String PAGE = "1";
 
-    public static final String BASE_URL = "http://padcmyanmar.com/padc-3/final-projects/one-time-jobs/pro/";
+    public static final String BASE_URL = "http://padcmyanmar.com/padc-2/asartaline/api/v1/";
 
     public static final String API_GET_ONE_TIME_JOBS = "getOneTimeJobs.php";
 
@@ -21,12 +21,7 @@ public class AppConstants {
     public static final String API_REGISTER_ONE_TIME_JOBS = "register.php";
     public static final String API_POST_NEW_JOB = "postNewJob.php";
 
-    public static final String AGE = "age";
-    public static final String PHONE_NUMBER = "phone_number";
-    public static final String GENDER = "gender";
-    public static final String EMPLOYMENT_STATUS = "employment_status";
-    public static final String HIGHEST_EDUCATION = "highest_education";
-    public static final String MYSHAREPREFERENCE = "sharepreference";
-    public static final String Skills = "skills";
-    public static final String Experiences = "experiences";
+
+    public static final String API_GET_MEAL_LIST = "GetWarDee.php";
+    public static final String API_SEARCH_MEAL_LIST ="SearchWarDee.php" ;
 }
