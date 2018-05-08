@@ -23,17 +23,61 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             >
 
-
-
-
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="310dp"
+                android:fitsSystemWindows="true"
+                android:background="@color/white"
+                app:layout_collapseMode="pin"
+                >
                 <ImageView
                     android:id="@+id/iv_hero"
                     android:layout_width="match_parent"
-                    android:layout_height="280dp"
+                    android:layout_height="290dp"
                     android:fitsSystemWindows="true"
                     android:foreground="@color/transparent"
                     android:src="@drawable/romantic_restaurant_hero"
                     android:scaleType="centerCrop"/>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="true"
+                    app:layout_collapseMode="pin"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="5"
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
+                            android:background="@color/accent"
+                            android:foreground="@drawable/ic_place_white_24dp"/>
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:hint="Search Meal"
+                            android:layout_weight="3"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
+                            />
+
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+
+            </RelativeLayout>
 
 
 
@@ -44,37 +88,6 @@
             <android.support.v7.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize">
-                
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layout_collapseMode="pin">
-
-
-                    
-                    <TextView
-                        android:id="@+id/tv_time_to_do"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginLeft="@dimen/margin_xlarge"
-                        android:layout_marginTop="@dimen/margin_small"
-                        android:paddingBottom="@dimen/margin_medium"
-                        android:text="time to do"
-                        android:textColor="@color/divider"
-                        android:textSize="@dimen/text_regular"
-                        />
-                    
-                    <TextView
-                        android:id="@+id/tv_day_time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_above="@+id/tv_time_to_do"
-                        android:layout_marginLeft="@dimen/margin_xlarge"
-                        android:fontFamily="sans-serif-thin"/>
-                </RelativeLayout>
-
-
 
             </android.support.v7.widget.Toolbar>
 

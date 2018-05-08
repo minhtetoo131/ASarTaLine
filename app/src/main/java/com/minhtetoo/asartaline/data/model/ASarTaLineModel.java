@@ -2,9 +2,11 @@ package com.minhtetoo.asartaline.data.model;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
+import android.content.Context;
 
 import com.google.gson.Gson;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import com.minhtetoo.asartaline.data.db.AppDatabase;
 import com.minhtetoo.asartaline.data.vos.MealVO;
 import com.minhtetoo.asartaline.network.ASarTaLineAPI;
 import com.minhtetoo.asartaline.network.responses.GetMealListRespose;
@@ -25,6 +27,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ASarTaLineModel extends ViewModel {
     private ASarTaLineAPI theApi;
     private MutableLiveData<List<MealVO>> mLiveDataMealVOs;
+    private AppDatabase mAppDatabase;
 
     public ASarTaLineModel() {
         initASarTaLineAPI();
@@ -49,6 +52,14 @@ public class ASarTaLineModel extends ViewModel {
         theApi = retrofit.create(ASarTaLineAPI.class);
     }
 
+    public void initDatabase(Context context) {
+        mAppDatabase = AppDatabase.getInMemoryDatabase(context);
+    }
+
+    public MealVO getMeal(String mealId) {
+        return mAppDatabase.mealDao().getMeal(mealId);
+    }
+
     public void loadMealList() {
         theApi.getMealList(AppConstants.ACCESS_TOKEN)
                 .subscribeOn(Schedulers.io())
@@ -56,6 +67,7 @@ public class ASarTaLineModel extends ViewModel {
                 .subscribe(new SingleObserver<GetMealListRespose>() {
                     @Override
                     public void onSubscribe(Disposable d) {
+
                     }
 
                     @Override
@@ -100,6 +112,6 @@ public class ASarTaLineModel extends ViewModel {
     @Override
     protected void onCleared() {
         super.onCleared();
-//        AppDatabase.destroyInstance();
+        AppDatabase.destroyInstance();
     }
 }

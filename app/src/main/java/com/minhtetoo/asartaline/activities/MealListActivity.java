@@ -14,7 +14,7 @@ import com.minhtetoo.asartaline.data.model.ASarTaLineModel;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity {
+public class MealListActivity extends BaseActivity {
 
     @BindView(R.id.rv_restaurant_list)SmartRecyclerView rvRestaurant;
     @BindView(R.id.vp_empty_restaurant)EmptyViewPod emptyViewPod;
@@ -35,12 +35,7 @@ public class MainActivity extends BaseActivity {
         rvRestaurant.setAdapter(mealListAdapter);
 
         mModel = ViewModelProviders.of(this).get(ASarTaLineModel.class);
-//        mModel.initDatabase(getApplicationContext());
-//        mJob = mModel.getJob(mJobId);
-//        Log.d(OneTimeJobsApp.TAG, "Job Id" + mJobId);
-//        if (mJob != null) {
-//            Log.d(OneTimeJobsApp.TAG, "Job" + mJob);
-//            bindData(mJob);
-//        }
+        mModel.initDatabase(getApplicationContext());
+
     }
 }

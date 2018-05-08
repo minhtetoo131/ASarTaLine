@@ -23,4 +23,16 @@ public class GeneralTasteVO {
     public String getDesc() {
         return desc;
     }
+
+    public void setTasteId(String tasteId) {
+        this.tasteId = tasteId;
+    }
+
+    public void setTaste(String taste) {
+        this.taste = taste;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
 }

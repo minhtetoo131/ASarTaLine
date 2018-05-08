@@ -25,18 +25,19 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/iv_hero_detail"
             android:weightSum="4"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/margin_medium_2">
             <TextView
                 android:id="@+id/tv_meal_brief"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="White Sauce Pasta With Vegetable"
+                android:text="@string/white_sauce_pasta_with_vegetable"
                 android:layout_weight="3"
                 android:textSize="@dimen/text_heading_1x"
                 android:textColor="@color/black"
                 android:layout_marginLeft="@dimen/margin_medium_3"
                 android:padding="@dimen/margin_medium"
-
+                android:layout_marginRight="@dimen/margin_medium"
                 />
 
             <TextView
@@ -44,13 +45,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@color/accent"
+                android:background="@drawable/bg_price"
                 android:text="$269"
                 android:textColor="@color/white"
                 android:gravity="center"
                 android:textSize="@dimen/text_heading_1x"
                 android:padding="@dimen/margin_medium_2"
-                android:layout_marginRight="@dimen/margin_medium_3"/>
+                android:layout_marginRight="@dimen/margin_medium_3"
+                android:layout_marginTop="@dimen/margin_medium"/>
         </LinearLayout>
 
         <TextView
@@ -82,7 +84,7 @@
                 android:layout_height="60dp"
                 android:orientation="horizontal"
                 android:layout_weight="1"
-                android:background="@color/accent"
+                android:background="@drawable/bg_amount"
                 android:gravity="center"
                 android:layout_marginLeft="@dimen/margin_large"
                 >
@@ -129,7 +131,7 @@
                 android:textSize="@dimen/text_heading_1x"
                 android:textColor="@color/white"
                 android:padding="@dimen/margin_medium_2"
-                android:background="@color/accent"
+                android:background="@drawable/bg_add_to_cart"
                 android:layout_marginLeft="2dp"
                 />
 

@@ -24,4 +24,6 @@ public class AppConstants {
 
     public static final String API_GET_MEAL_LIST = "GetWarDee.php";
     public static final String API_SEARCH_MEAL_LIST ="SearchWarDee.php" ;
+    public static final String MEAL_TABLE_NAME = "meals";
+    public static final String MEAL_ID = "mealId" ;
 }

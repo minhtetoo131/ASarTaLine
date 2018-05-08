@@ -6,8 +6,7 @@
     android:paddingTop="@dimen/margin_xlarge"
     android:paddingRight="@dimen/margin_xlarge"
     android:paddingBottom="@dimen/margin_xlarge"
-    android:clipToPadding="true"
-    android:background="@color/white">
+    >
 
 
     <android.support.v7.widget.CardView
@@ -82,21 +81,21 @@
                 android:layout_marginBottom="@dimen/margin_medium_2"
                 />
 
-            <TextView
-                android:id="@+id/tv_food_rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="4.6"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_regular_3x"
-                android:background="@color/accent"
-                android:padding="@dimen/margin_medium_2"
-                android:layout_alignParentRight="true"
-                android:paddingTop="@dimen/margin_xlarge_n"
-                android:paddingRight="@dimen/margin_xlarge_n"/>
+
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_food_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4.6"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_regular_3x"
+        android:background="@drawable/bg_rating"
+        android:layout_alignParentRight="true"
+        />
 
 
 
