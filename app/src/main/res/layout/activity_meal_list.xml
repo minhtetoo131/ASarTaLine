@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            >
+
+            <ImageView
+                android:id="@+id/iv_hero"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/romantic_restaurant_hero"
+                android:fitsSystemWindows="true"/>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/tool_bar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/appBarSize"
+                android:minHeight="?attr/actionBarSize" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="@dimen/margin_medium_2"
+                app:layout_collapseMode="parallax">
+
+                <LinearLayout
+                    android:id="@+id/ll_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="@dimen/margin_medium_2"
+                    android:layout_marginRight="@dimen/margin_medium_2"
+                    android:layout_marginTop="69dp"
+                    android:orientation="horizontal"
+                    android:weightSum="5"
+                    android:background="@drawable/bg_linearlayout_search">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/accent"
+                        android:src="@drawable/ic_place_white_24dp"
+                        android:padding="@dimen/margin_medium_2"/>
+
+                    <EditText
+                        android:id="@+id/et_search"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:background="@color/white"
+                        android:hint="Search"
+                        android:paddingLeft="@dimen/margin_medium_2"/>
+
+                    <ImageView
+                        android:id="@+id/btn_search"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:src="@drawable/ic_search_24dp"
+                        android:padding="@dimen/margin_medium"
+                        />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_afternoon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/ll_search"
+                    android:layout_below="@id/ll_search"
+                    android:layout_marginTop="@dimen/margin_medium_2"
+                    android:text="Good Afternoon, Anish"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_regular_2x" />
+
+                <TextView
+                    android:id="@+id/tv_time_for_lunch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/ll_search"
+                    android:layout_below="@id/tv_afternoon"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:text="It's time for lunch"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_regular" />
+
+            </RelativeLayout>
+
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <RelativeLayout
+            android:id="@+id/rl_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/ll_food_categories"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginLeft="@dimen/margin_medium"
+                android:layout_marginRight="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_xxlarge"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/chinese" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/tacos" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/burger" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/donut" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lbl_offers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/ll_food_categories"
+                android:layout_below="@id/ll_food_categories"
+                android:layout_marginTop="@dimen/margin_xlarge"
+                android:text="@string/offers"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/text_regular_3x" />
+
+
+            <com.minhtetoo.asartaline.components.rvset.SmartRecyclerView
+                android:id="@+id/rv_meal_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/ll_food_categories"
+                android:layout_below="@id/lbl_offers" />
+
+            <include
+                android:id="@+id/vp_empty_restaurant"
+                layout="@layout/view_pod_empty"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/lbl_offers" />
+
+
+        </RelativeLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+</android.support.design.widget.CoordinatorLayout>

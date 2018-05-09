@@ -1,5 +1,6 @@
 package com.minhtetoo.asartaline.data.model;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.content.Context;
@@ -32,7 +33,6 @@ public class ASarTaLineModel extends ViewModel {
     public ASarTaLineModel() {
         initASarTaLineAPI();
         mLiveDataMealVOs = new MutableLiveData<>();
-        loadMealList();
     }
 
     private void initASarTaLineAPI() {
@@ -56,11 +56,23 @@ public class ASarTaLineModel extends ViewModel {
         mAppDatabase = AppDatabase.getInMemoryDatabase(context);
     }
 
+    public LiveData<List<MealVO>> getMealList() {
+        return mAppDatabase.mealDao().getAllMeals();
+    }
+
     public MealVO getMeal(String mealId) {
         return mAppDatabase.mealDao().getMeal(mealId);
     }
 
-    public void loadMealList() {
+    public List<MealVO> getMeals(List<String> mealIds) {
+        return mAppDatabase.mealDao().getMealWithIds(mealIds);
+    }
+
+    public long insertMeal(MealVO meal) {
+        return mAppDatabase.mealDao().insertMeal(meal);
+    }
+
+    public LiveData<List<MealVO>> loadMealList() {
         theApi.getMealList(AppConstants.ACCESS_TOKEN)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -73,7 +85,8 @@ public class ASarTaLineModel extends ViewModel {
                     @Override
                     public void onSuccess(GetMealListRespose getMealListRespose) {
                         if (getMealListRespose.getMealVOList() != null && getMealListRespose.getMealVOList().size() > 0) {
-                            mLiveDataMealVOs.setValue(getMealListRespose.getMealVOList());
+//                            mLiveDataMealVOs.setValue(getMealListRespose.getMealVOList());
+                            long[] insertedJobs = mAppDatabase.mealDao().insertMeals(getMealListRespose.getMealVOList());
                         }
                     }
 
@@ -82,6 +95,15 @@ public class ASarTaLineModel extends ViewModel {
                         //TODO handle no internet connection;
                     }
                 });
+        return mAppDatabase.mealDao().getAllMeals();
+    }
+
+    public LiveData<List<MealVO>> loadMoreMeal() {
+        return getMealList();
+    }
+
+    public LiveData<List<MealVO>> forceRefreshMeals() {
+        return loadMealList();
     }
 
     public void searchMealList(String tasteType,String suited,String minPrice,String maxPrice,String isNear,String currentTownShip,String currentLat,String currentLong) {

@@ -10,4 +10,5 @@
     <string name="dummy_meal_detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mattis enim nec lacus cursus, at ultrices est pharetra. Nullam aliquam magna at commodo hendrerit. Nunc quis metus lectus. Nulla sed nisi suscipit, commodo nulla eget, pretium tellus. Nam bibendum, augue vitae lacinia viverra, neque nisi eleifend ipsum, id tempus est nibh in ligula. Nulla facilisi.</string>
     <string name="add_to_cart">ADD TO CART</string>
     <string name="white_sauce_pasta_with_vegetable">White Sauce Pasta With Vegetable</string>
+    <string name="search">search</string>
 </resources>

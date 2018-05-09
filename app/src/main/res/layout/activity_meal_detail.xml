@@ -1,58 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="256dp"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <ImageView
+                android:id="@+id/iv_hero_detail"
+                android:layout_width="match_parent"
+                android:layout_height="256dp"
+                android:fitsSystemWindows="true"
+                android:foreground="@color/transparent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/pasta" />
+
+
+            <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin" />
+
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
 
-        <ImageView
-            android:id="@+id/iv_hero_detail"
-            android:layout_width="match_parent"
-            android:layout_height="256dp"
-            android:fitsSystemWindows="true"
-            android:foreground="@color/transparent"
-            android:src="@drawable/pasta"
-            android:scaleType="centerCrop"/>
 
         <LinearLayout
             android:id="@+id/ll_meal_brief_and_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/iv_hero_detail"
-            android:weightSum="4"
+            android:layout_marginTop="@dimen/margin_medium_2"
             android:orientation="horizontal"
-            android:layout_marginTop="@dimen/margin_medium_2">
+            android:weightSum="4">
+
             <TextView
                 android:id="@+id/tv_meal_brief"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/white_sauce_pasta_with_vegetable"
-                android:layout_weight="3"
-                android:textSize="@dimen/text_heading_1x"
-                android:textColor="@color/black"
                 android:layout_marginLeft="@dimen/margin_medium_3"
-                android:padding="@dimen/margin_medium"
                 android:layout_marginRight="@dimen/margin_medium"
-                />
+                android:layout_weight="3"
+                android:padding="@dimen/margin_medium"
+                android:text="@string/white_sauce_pasta_with_vegetable"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_heading_1x" />
 
             <TextView
                 android:id="@+id/tv_meal_price"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_medium_3"
+                android:layout_marginTop="@dimen/margin_medium"
                 android:layout_weight="1"
                 android:background="@drawable/bg_price"
+                android:gravity="center"
+                android:padding="@dimen/margin_medium_2"
                 android:text="$269"
                 android:textColor="@color/white"
-                android:gravity="center"
-                android:textSize="@dimen/text_heading_1x"
-                android:padding="@dimen/margin_medium_2"
-                android:layout_marginRight="@dimen/margin_medium_3"
-                android:layout_marginTop="@dimen/margin_medium"/>
+                android:textSize="@dimen/text_heading_1x" />
+
         </LinearLayout>
 
         <TextView
@@ -60,97 +86,97 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/ll_meal_brief_and_price"
-            android:text="@string/dummy_meal_detail"
             android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin_medium_3"
             android:layout_marginTop="@dimen/margin_large"
             android:lineSpacingMultiplier="1.4"
-            android:layout_marginRight="@dimen/margin_medium_3"/>
+            android:text="@string/dummy_meal_detail" />
 
 
 
-        <LinearLayout
-            android:id="@+id/ll_amount_and_add_to_cart"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_alignParentBottom="true"
-            android:weightSum="3"
-            android:layout_marginBottom="@dimen/margin_medium_2"
-            android:layout_alignRight="@id/tv_meal_detail">
 
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                android:background="@drawable/bg_amount"
-                android:gravity="center"
-                android:layout_marginLeft="@dimen/margin_large"
-                >
 
-                <TextView
-                    android:id="@+id/btn_minus_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="-"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_regular_3x"
-                    android:layout_margin="@dimen/margin_medium"
-                    />
 
-                <TextView
-                    android:id="@+id/tv_amount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="3"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_regular_3x"
-                    android:layout_margin="@dimen/margin_medium"
-                    />
-
-                <TextView
-                    android:id="@+id/btn_plus_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="+"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_regular_3x"
-                    android:layout_margin="@dimen/margin_medium"
-                    />
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/btn_add_to_cart"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_weight="2"
-                android:text="@string/add_to_cart"
-                android:gravity="center"
-                android:textSize="@dimen/text_heading_1x"
-                android:textColor="@color/white"
-                android:padding="@dimen/margin_medium_2"
-                android:background="@drawable/bg_add_to_cart"
-                android:layout_marginLeft="2dp"
-                />
-
-        </LinearLayout>
-
-        <EditText
-            android:id="@+id/et_add_note"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/ll_amount_and_add_to_cart"
-            android:layout_alignLeft="@id/tv_meal_detail"
-            android:layout_alignRight="@id/tv_meal_detail"
-            android:hint="Add a note (extra sauce,no onion etc.)"
-            android:backgroundTint="@color/third_text"
-            android:paddingBottom="@dimen/margin_medium_2"
-            android:layout_marginBottom="@dimen/margin_medium_2"/>
 
     </RelativeLayout>
 
+    <EditText
+        android:id="@+id/et_add_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:hint="Add a note (extra sauce,no onion etc.)"
+        android:layout_marginLeft="@dimen/margin_medium_3"
+        android:layout_marginRight="@dimen/margin_medium_3"
+        android:backgroundTint="@color/third_text"
+        android:paddingBottom="@dimen/margin_medium_2"
+        android:layout_marginBottom="@dimen/et_amount_margin_bottom"/>
+    <LinearLayout
+        android:id="@+id/ll_amount_and_add_to_cart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="@dimen/margin_medium_2"
+        android:orientation="horizontal"
+        android:weightSum="3">
 
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_weight="1"
+            android:background="@drawable/bg_amount"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/btn_minus_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_medium"
+                android:text="-"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_regular_3x" />
+
+            <TextView
+                android:id="@+id/tv_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_medium"
+                android:text="3"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_regular_3x" />
+
+            <TextView
+                android:id="@+id/btn_plus_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_medium"
+                android:text="+"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_regular_3x" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btn_add_to_cart"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="@dimen/margin_medium_3"
+            android:layout_weight="2"
+            android:background="@drawable/bg_add_to_cart"
+            android:gravity="center"
+            android:padding="@dimen/margin_medium_2"
+            android:text="@string/add_to_cart"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_heading_1x" />
+
+    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>
+
+
+

@@ -26,12 +26,12 @@ public abstract class BaseRecyclerAdapter<T extends BaseViewHolder, W> extends R
 
     @Override
     public void onBindViewHolder(T holder, int position) {
-//        holder.setData(mData.get(position));
+        holder.setData(mData.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return 5;
+        return mData.size();
     }
 
     public void setNewData(List<W> newData) {
