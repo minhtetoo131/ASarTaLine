@@ -28,11 +28,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ASarTaLineModel extends ViewModel {
     private ASarTaLineAPI theApi;
     private MutableLiveData<List<MealVO>> mLiveDataMealVOs;
+    private MutableLiveData<List<MealVO>> mLiveDataSearchMeals;
     private AppDatabase mAppDatabase;
 
     public ASarTaLineModel() {
         initASarTaLineAPI();
         mLiveDataMealVOs = new MutableLiveData<>();
+        mLiveDataSearchMeals = new MutableLiveData<>();
     }
 
     private void initASarTaLineAPI() {
@@ -98,15 +100,11 @@ public class ASarTaLineModel extends ViewModel {
         return mAppDatabase.mealDao().getAllMeals();
     }
 
-    public LiveData<List<MealVO>> loadMoreMeal() {
-        return getMealList();
-    }
-
     public LiveData<List<MealVO>> forceRefreshMeals() {
         return loadMealList();
     }
 
-    public void searchMealList(String tasteType,String suited,String minPrice,String maxPrice,String isNear,String currentTownShip,String currentLat,String currentLong) {
+    public MutableLiveData<List<MealVO>> searchMealList(String tasteType,String suited,String minPrice,String maxPrice,String isNear,String currentTownShip,String currentLat,String currentLong) {
         theApi.searchMeal(AppConstants.ACCESS_TOKEN,tasteType,suited,
                 minPrice,maxPrice,isNear,currentTownShip
                 ,currentLat,currentLong)
@@ -120,15 +118,23 @@ public class ASarTaLineModel extends ViewModel {
                     @Override
                     public void onSuccess(GetSearchMealListResponse searchResponse) {
                         if (searchResponse.getSearchMealList() != null && searchResponse.getSearchMealList().size() > 0) {
-                            //TODO search
+                            mLiveDataSearchMeals.setValue(searchResponse.getSearchMealList());
                         }
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         //TODO handle no internet connection;
+                        e.toString();
                     }
                 });
+
+        return mLiveDataSearchMeals;
+    }
+
+    public MutableLiveData<List<MealVO>> loadMoreMeal() {
+        //TODO real pagination api call
+        return new MutableLiveData<List<MealVO>>();
     }
 
     @Override

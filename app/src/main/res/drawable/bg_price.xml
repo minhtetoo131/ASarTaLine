@@ -4,8 +4,8 @@
     >
 
     <corners
-        android:topLeftRadius="20dp"
-        android:bottomRightRadius="20dp" />
+        android:topLeftRadius="15dp"
+        android:bottomRightRadius="15dp" />
 
     <solid
         android:color="@color/accent"
