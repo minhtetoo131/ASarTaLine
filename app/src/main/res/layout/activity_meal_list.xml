@@ -182,7 +182,7 @@
                     android:id="@+id/lbl_offers"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@id/ll_food_categories"
+                    android:layout_marginLeft="@dimen/margin_large"
                     android:layout_below="@id/ll_food_categories"
                     android:layout_marginTop="@dimen/margin_xlarge"
                     android:text="@string/offers"

@@ -16,17 +16,18 @@
         android:layout_marginRight="@dimen/margin_medium_3"
         android:layout_marginBottom="@dimen/margin_medium_2"
         android:layout_marginTop="@dimen/margin_medium_2"
+        android:foreground="@drawable/ripple_accent"
         >
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             >
 
 
             <ImageView
                 android:id="@+id/iv_meal"
-                android:layout_width="150dp"
+                android:layout_width="140dp"
                 android:layout_height="150dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/romantic_restaurant" />
@@ -63,30 +64,32 @@
                 android:textColor="@color/secondary_text"
                 android:textSize="@dimen/text_regular_2x" />
 
-            <RatingBar
-                android:id="@+id/rtbProductRating"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:numStars="5"
-                android:rating="5"
-                android:isIndicator="false"
-                style="@style/foodRatingBar"
-                android:layout_toRightOf="@id/iv_meal"
-                android:layout_alignParentBottom="true"
-                android:layout_alignLeft="@id/tv_meal_name"
-                android:layout_alignBottom="@id/lbl_view_details"
-                />
 
+
+
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:id="@+id/rating_food"
+                android:rating="3.5"
+                android:stepSize="0.5"
+                android:numStars="5"
+                android:layout_alignParentBottom="true"
+                android:paddingBottom="@dimen/margin_medium"
+                android:layout_toRightOf="@id/iv_meal"
+                android:layout_alignLeft="@id/tv_meal_name"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                />
 
 
             <TextView
                 android:id="@+id/lbl_view_details"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
+                android:layout_height="30dp"
                 android:layout_alignParentRight="true"
-                android:layout_marginBottom="@dimen/margin_medium_2"
+                android:layout_marginBottom="@dimen/margin_medium"
                 android:layout_marginRight="@dimen/margin_medium_2"
+                android:layout_alignParentBottom="true"
                 android:text="View details"
                 android:textColor="@color/accent" />
 

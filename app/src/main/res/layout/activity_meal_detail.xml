@@ -41,53 +41,62 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        >
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-
-        <TextView
-            android:id="@+id/tv_meal_brief"
+        <LinearLayout
+            android:id="@+id/ll_name_brief"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_marginLeft="@dimen/margin_medium_3"
             android:layout_marginRight="@dimen/margin_medium"
             android:layout_marginTop="@dimen/margin_medium_3"
-            android:padding="@dimen/margin_medium"
-            android:text="@string/dummy_breif"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_heading_1x" />
+            >
+            <TextView
+                android:id="@+id/tv_meal_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dummy_breif"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_regular_2x"
+                />
+
+            <TextView
+                android:id="@+id/tv_meal_brief"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                 android:text="@string/dummy_breif"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_regular_2x"
+                />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tv_meal_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/margin_medium_3"
+            android:layout_marginRight="@dimen/margin_xlarge"
             android:layout_marginTop="@dimen/margin_medium"
+            android:layout_alignBottom="@id/ll_name_brief"
+            android:layout_toRightOf="@id/ll_name_brief"
             android:background="@drawable/bg_price"
             android:gravity="center"
             android:padding="@dimen/margin_medium"
             android:text="$269"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_regular_3x"
-            android:layout_toRightOf="@id/tv_meal_brief"
-            android:layout_alignBaseline="@id/tv_meal_brief"/>
+            android:textSize="@dimen/text_regular_3x" />
 
         <TextView
             android:id="@+id/tv_meal_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_meal_brief"
+            android:layout_below="@id/ll_name_brief"
             android:layout_marginLeft="@dimen/margin_large"
             android:layout_marginRight="@dimen/margin_medium_3"
             android:layout_marginTop="@dimen/margin_large"
             android:lineSpacingMultiplier="1.4"
             android:text="@string/dummy_meal_detail" />
-
-
-
-
-
-
 
 
     </RelativeLayout>
@@ -97,12 +106,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:hint="Add a note (extra sauce,no onion etc.)"
+        android:layout_marginBottom="@dimen/et_amount_margin_bottom"
         android:layout_marginLeft="@dimen/margin_medium_3"
         android:layout_marginRight="@dimen/margin_medium_3"
         android:backgroundTint="@color/third_text"
-        android:paddingBottom="@dimen/margin_medium_2"
-        android:layout_marginBottom="@dimen/et_amount_margin_bottom"/>
+        android:hint="Add a note (extra sauce,no onion etc.)"
+        android:paddingBottom="@dimen/margin_medium_2" />
+
     <LinearLayout
         android:id="@+id/ll_amount_and_add_to_cart"
         android:layout_width="match_parent"
@@ -136,7 +146,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_medium"
-                android:text="3"
+                android:text="0"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_regular_3x" />
 
@@ -159,6 +169,7 @@
             android:layout_marginRight="@dimen/margin_medium_3"
             android:layout_weight="2"
             android:background="@drawable/bg_add_to_cart"
+            android:foreground="@drawable/ripple_white"
             android:gravity="center"
             android:padding="@dimen/margin_medium_2"
             android:text="@string/add_to_cart"
