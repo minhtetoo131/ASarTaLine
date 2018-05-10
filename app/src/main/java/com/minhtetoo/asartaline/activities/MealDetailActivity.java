@@ -11,16 +11,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.minhtetoo.asartaline.ASarTaLineApp;
 import com.minhtetoo.asartaline.R;
 import com.minhtetoo.asartaline.data.model.ASarTaLineModel;
 import com.minhtetoo.asartaline.data.vos.MealVO;
+import com.minhtetoo.asartaline.mvp.presenters.MealDetailPresenters;
+import com.minhtetoo.asartaline.mvp.views.MealDetailView;
 import com.minhtetoo.asartaline.utils.AppConstants;
+
+import org.greenrobot.eventbus.EventBus;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MealDetailActivity extends BaseActivity {
+public class MealDetailActivity extends BaseActivity implements MealDetailView{
     @BindView(R.id.iv_hero_detail)ImageView ivHeroDetail;
     @BindView(R.id.tv_meal_brief)TextView tvBrief;
     @BindView(R.id.tv_meal_price)TextView tvPrice;
@@ -32,6 +39,9 @@ public class MealDetailActivity extends BaseActivity {
 
     private int orderAmount = 0;
     private String mealId;
+
+    @Inject
+    MealDetailPresenters mPresenter;
 
     public static Intent newIntent(Context context,String mealId){
         Intent intent = new Intent(context,MealDetailActivity.class);
@@ -49,11 +59,47 @@ public class MealDetailActivity extends BaseActivity {
 
         mModel = ViewModelProviders.of(this).get(ASarTaLineModel.class);
         mModel.initDatabase(getApplicationContext());
+
+        ASarTaLineApp app = (ASarTaLineApp)getApplicationContext();
+        app.getASTLAppComponent().inject(this);
+
+        mPresenter = new MealDetailPresenters();
+        mPresenter.onCreate(this);
         mMeal = mModel.getMeal(mealId);
 
         if (mMeal != null) {
             bindData(mMeal);
         }
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mPresenter.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mPresenter.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mPresenter.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+        mPresenter.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mPresenter.onDestroy();
     }
 
 

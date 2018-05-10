@@ -123,7 +123,6 @@ public class MealListActivity extends BaseActivity implements MealListView {
     @Override
     protected void onStop() {
         super.onStop();
-        EventBus.getDefault().unregister(this);
         mPresenter.onStop();
     }
 
