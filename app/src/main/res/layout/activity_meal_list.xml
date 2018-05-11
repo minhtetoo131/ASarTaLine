@@ -88,7 +88,7 @@
                     android:layout_alignLeft="@id/ll_search"
                     android:layout_below="@id/ll_search"
                     android:layout_marginTop="@dimen/margin_medium_2"
-                    android:text="Good Afternoon, Anish"
+                    android:text="@string/welcome_message"
                     android:textColor="@color/white"
                     android:textSize="@dimen/text_regular_2x" />
 
@@ -99,7 +99,7 @@
                     android:layout_alignLeft="@id/ll_search"
                     android:layout_below="@id/tv_afternoon"
                     android:layout_marginTop="@dimen/margin_medium"
-                    android:text="It's time for lunch"
+                    android:text="@string/it_s_time_"
                     android:textColor="@color/white"
                     android:textSize="@dimen/text_regular" />
 
@@ -145,14 +145,14 @@
                         android:layout_weight="1"
                         android:drawableTop="@drawable/ic_place_white_50dp"
                         android:paddingTop="@dimen/margin_medium"
-                        android:text="CHINESE"
+                        android:text="@string/chinese"
                         android:gravity="center"/>
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="80dp"
                         android:layout_weight="1"
-                        android:text="TACOS"
+                        android:text="@string/tacos"
                         android:drawableTop="@drawable/ic_place_white_50dp"
                         android:paddingTop="@dimen/margin_medium"
                         android:gravity="center"/>
@@ -161,7 +161,7 @@
                         android:layout_width="0dp"
                         android:layout_height="80dp"
                         android:layout_weight="1"
-                        android:text="BURGER"
+                        android:text="@string/burger"
                         android:drawableTop="@drawable/ic_place_white_50dp"
                         android:paddingTop="@dimen/margin_medium"
                         android:gravity="center"/>
@@ -170,7 +170,7 @@
                         android:layout_width="0dp"
                         android:layout_height="80dp"
                         android:layout_weight="1"
-                        android:text="DONUT"
+                        android:text="@string/donut"
                         android:drawableTop="@drawable/ic_place_white_50dp"
                         android:paddingTop="@dimen/margin_medium"
                         android:gravity="center"/>

@@ -9,6 +9,8 @@ import com.minhtetoo.asartaline.data.model.ASarTaLineModel;
 import com.minhtetoo.asartaline.data.vos.MealVO;
 import com.minhtetoo.asartaline.mvp.views.MealListView;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -33,10 +35,12 @@ public class MealListPresenter extends BasePresenter<MealListView> implements Me
     @Override
     public void onStart() {
         startLoadingMeals();
+        EventBus.getDefault().register(mView);
     }
 
     @Override
     public void onStop() {
+        EventBus.getDefault().unregister(mView);
     }
 
     private void showWelcomeMessage() {

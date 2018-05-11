@@ -9,10 +9,13 @@ import com.google.gson.Gson;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.minhtetoo.asartaline.data.db.AppDatabase;
 import com.minhtetoo.asartaline.data.vos.MealVO;
+import com.minhtetoo.asartaline.events.ErrorEvent;
 import com.minhtetoo.asartaline.network.ASarTaLineAPI;
 import com.minhtetoo.asartaline.network.responses.GetMealListRespose;
 import com.minhtetoo.asartaline.network.responses.GetSearchMealListResponse;
 import com.minhtetoo.asartaline.utils.AppConstants;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -81,20 +84,20 @@ public class ASarTaLineModel extends ViewModel {
                 .subscribe(new SingleObserver<GetMealListRespose>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
                     }
 
                     @Override
                     public void onSuccess(GetMealListRespose getMealListRespose) {
                         if (getMealListRespose.getMealVOList() != null && getMealListRespose.getMealVOList().size() > 0) {
 //                            mLiveDataMealVOs.setValue(getMealListRespose.getMealVOList());
-                            long[] insertedJobs = mAppDatabase.mealDao().insertMeals(getMealListRespose.getMealVOList());
+                            long[] insertedMeals = mAppDatabase.mealDao().insertMeals(getMealListRespose.getMealVOList());
                         }
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        //TODO handle no internet connection;
+                        ErrorEvent.ErrorInvokingAPIEvent errorEvent = new ErrorEvent.ErrorInvokingAPIEvent(e.getMessage());
+                        EventBus.getDefault().post(errorEvent);
                     }
                 });
         return mAppDatabase.mealDao().getAllMeals();
@@ -124,8 +127,8 @@ public class ASarTaLineModel extends ViewModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        //TODO handle no internet connection;
-                        e.toString();
+                        ErrorEvent.ErrorInvokingAPIEvent errorEvent = new ErrorEvent.ErrorInvokingAPIEvent(e.getMessage());
+                        EventBus.getDefault().post(errorEvent);
                     }
                 });
 

@@ -27,13 +27,19 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MealDetailActivity extends BaseActivity implements MealDetailView{
-    @BindView(R.id.iv_hero_detail)ImageView ivHeroDetail;
-    @BindView(R.id.tv_meal_brief)TextView tvBrief;
-    @BindView(R.id.tv_meal_price)TextView tvPrice;
-    @BindView(R.id.tv_meal_detail)TextView tvDetail;
-    @BindView(R.id.tv_amount)TextView tvOrderAmount;
-    @BindView(R.id.tv_meal_name)TextView tvMealName;
+public class MealDetailActivity extends BaseActivity implements MealDetailView {
+    @BindView(R.id.iv_hero_detail)
+    ImageView ivHeroDetail;
+    @BindView(R.id.tv_meal_brief)
+    TextView tvBrief;
+    @BindView(R.id.tv_meal_price)
+    TextView tvPrice;
+    @BindView(R.id.tv_meal_detail)
+    TextView tvDetail;
+    @BindView(R.id.tv_amount)
+    TextView tvOrderAmount;
+    @BindView(R.id.tv_meal_name)
+    TextView tvMealName;
     private ASarTaLineModel mModel;
     private MealVO mMeal;
 
@@ -43,9 +49,9 @@ public class MealDetailActivity extends BaseActivity implements MealDetailView{
     @Inject
     MealDetailPresenters mPresenter;
 
-    public static Intent newIntent(Context context,String mealId){
-        Intent intent = new Intent(context,MealDetailActivity.class);
-        intent.putExtra(AppConstants.MEAL_ID,mealId);
+    public static Intent newIntent(Context context, String mealId) {
+        Intent intent = new Intent(context, MealDetailActivity.class);
+        intent.putExtra(AppConstants.MEAL_ID, mealId);
         return intent;
     }
 
@@ -53,24 +59,25 @@ public class MealDetailActivity extends BaseActivity implements MealDetailView{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meal_detail);
-        ButterKnife.bind(this,this);
+        ButterKnife.bind(this, this);
 
         mealId = getIntent().getStringExtra(AppConstants.MEAL_ID);
 
         mModel = ViewModelProviders.of(this).get(ASarTaLineModel.class);
         mModel.initDatabase(getApplicationContext());
+        mMeal = mModel.getMeal(mealId);
 
-        ASarTaLineApp app = (ASarTaLineApp)getApplicationContext();
+        ASarTaLineApp app = (ASarTaLineApp) getApplicationContext();
         app.getASTLAppComponent().inject(this);
 
         mPresenter = new MealDetailPresenters();
         mPresenter.onCreate(this);
-        mMeal = mModel.getMeal(mealId);
 
         if (mMeal != null) {
             bindData(mMeal);
         }
     }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -102,27 +109,27 @@ public class MealDetailActivity extends BaseActivity implements MealDetailView{
         mPresenter.onDestroy();
     }
 
-
     private void bindData(MealVO meal) {
         tvMealName.setText(meal.getMealName());
-        if (meal.getImages() != null && meal.getImages().size() > 0){
+        if (meal.getImages() != null && meal.getImages().size() > 0) {
             Glide.with(getApplicationContext())
                     .load(meal.getImages().get(0))
                     .into(ivHeroDetail);
         }
-        tvPrice.setText(meal.getPrice()+ "");
-        if (meal.getTasteVOList() != null && meal.getTasteVOList().size() > 0){
+        tvPrice.setText(meal.getPrice() + "");
+        if (meal.getTasteVOList() != null && meal.getTasteVOList().size() > 0) {
             tvBrief.setText(meal.getTasteVOList().get(0).getTaste());
             tvDetail.setText(meal.getTasteVOList().get(0).getDesc());
         }
     }
 
     @OnClick(R.id.btn_plus_icon)
-    public void onTapAmountAdd(View view){
-        tvOrderAmount.setText(orderAmount != -1 ? ++orderAmount +"" : "0");
+    public void onTapAmountAdd(View view) {
+        tvOrderAmount.setText(orderAmount != -1 ? ++orderAmount + "" : "0");
     }
+
     @OnClick(R.id.btn_minus_icon)
-    public void onTapAmountsubtract(View view){
-        tvOrderAmount.setText(orderAmount == 0 ? "0" : --orderAmount +"");
+    public void onTapAmountsubtract(View view) {
+        tvOrderAmount.setText(orderAmount == 0 ? "0" : --orderAmount + "");
     }
 }

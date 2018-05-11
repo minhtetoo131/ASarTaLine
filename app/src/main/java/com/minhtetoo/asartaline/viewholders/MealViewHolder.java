@@ -18,8 +18,6 @@ public class MealViewHolder extends BaseViewHolder<MealVO> {
     @BindView(R.id.tv_meal_type)TextView tvMealType;
     @BindView(R.id.tv_meal_cost)TextView tvMealPrice;
 
-
-
     private MealItemController mMealItemController;
 
     public MealViewHolder(View itemView, MealItemController itemController) {

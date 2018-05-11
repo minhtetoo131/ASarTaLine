@@ -1,16 +1,13 @@
 package com.minhtetoo.asartaline.activities;
 
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -20,16 +17,17 @@ import com.minhtetoo.asartaline.adapters.MealListAdapter;
 import com.minhtetoo.asartaline.components.EmptyViewPod;
 import com.minhtetoo.asartaline.components.rvset.SmartRecyclerView;
 import com.minhtetoo.asartaline.components.rvset.SmartScrollListener;
-import com.minhtetoo.asartaline.controllers.MealItemController;
 import com.minhtetoo.asartaline.data.model.ASarTaLineModel;
 import com.minhtetoo.asartaline.data.vos.MealVO;
+import com.minhtetoo.asartaline.events.ErrorEvent;
 import com.minhtetoo.asartaline.mvp.presenters.MealListPresenter;
 import com.minhtetoo.asartaline.mvp.views.MealListView;
 
-import org.greenrobot.eventbus.EventBus;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import butterknife.BindView;
@@ -61,6 +59,7 @@ public class MealListActivity extends BaseActivity implements MealListView {
 
         mModel = ViewModelProviders.of(this).get(ASarTaLineModel.class);
         mModel.initDatabase(getApplicationContext());
+
         mPresenter = new MealListPresenter(this, mModel);
         mPresenter.onCreate(this);
 
@@ -69,12 +68,14 @@ public class MealListActivity extends BaseActivity implements MealListView {
         mealListAdapter = new MealListAdapter(getApplicationContext(), mPresenter);
         rvMealList.setAdapter(mealListAdapter);
         mAllMeals = new ArrayList<>();
+
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 mPresenter.onForceRefresh();
             }
         });
+
         mSmartScrollListener = new SmartScrollListener(new SmartScrollListener.ControllerSmartScroll() {
             @Override
             public void onListEndReached() {
@@ -99,7 +100,6 @@ public class MealListActivity extends BaseActivity implements MealListView {
             public void afterTextChanged(Editable editable) {
             }
         });
-
     }
 
     @Override
@@ -132,6 +132,12 @@ public class MealListActivity extends BaseActivity implements MealListView {
         mPresenter.onDestroy();
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onErrorInvokingAPI(ErrorEvent.ErrorInvokingAPIEvent event) {
+        Snackbar.make(rvMealList, event.getErrorMsg(), Snackbar.LENGTH_INDEFINITE).show();
+        mSwipeRefreshLayout.setRefreshing(false);
+    }
+
 
     @OnClick(R.id.btn_search)
     public void onTapSearch(View view){
@@ -149,7 +155,7 @@ public class MealListActivity extends BaseActivity implements MealListView {
 
     @Override
     public void displayError() {
-        Snackbar.make(rvMealList, "No data can't be loaded, plz try again!", Snackbar.LENGTH_LONG).show();
+        Snackbar.make(rvMealList, getResources().getString(R.string.data_cant_load), Snackbar.LENGTH_LONG).show();
     }
 
     @Override

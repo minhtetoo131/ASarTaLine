@@ -12,4 +12,15 @@
     <string name="white_sauce_pasta_with_vegetable">White Sauce Pasta With Vegetable</string>
     <string name="search">search</string>
     <string name="dummy_breif">this is dummy breif</string>
+    <string name="data_cant_load">No data can't be loaded, plz try again!</string>
+    <string name="add_a_note">Add a note (extra sauce,no onion etc.)</string>
+    <string name="welcome_message">Good Afternoon, Anish</string>
+    <string name="it_s_time_">It\'s time for lunch</string>
+    <string name="chinese">CHINESE</string>
+    <string name="tacos">TACOS</string>
+    <string name="burger">BURGER</string>
+    <string name="donut">DONUT</string>
+    <string name="cafe_italian_chinese">Cafe, Italian, Chinese</string>
+    <string name="dummy_price">Cost $300 for one</string>
+    <string name="view_details">View details</string>
 </resources>

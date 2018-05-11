@@ -33,9 +33,7 @@ public class ASarTaLineApp extends Application {
         return DaggerASTLAppComponent.builder()
                 .appModule(new AppModule(this))
                 .build();
-
     }
-
 
     public ASTLAppComponent getASTLAppComponent() {
         return mASTLAppComponent;

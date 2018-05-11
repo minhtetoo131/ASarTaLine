@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@id/tv_meal_name"
                 android:layout_below="@id/tv_meal_name"
-                android:text="Cafe, Italian, Chinese"
+                android:text="@string/cafe_italian_chinese"
                 android:textColor="@color/secondary_text"
                 android:textSize="@dimen/text_regular_2x" />
 
@@ -60,7 +60,7 @@
                 android:layout_alignLeft="@id/tv_meal_name"
                 android:layout_below="@id/tv_meal_type"
                 android:layout_toRightOf="@id/iv_meal"
-                android:text="Cost $300 for one"
+                android:text="@string/dummy_price"
                 android:textColor="@color/secondary_text"
                 android:textSize="@dimen/text_regular_2x" />
 
@@ -90,7 +90,7 @@
                 android:layout_marginBottom="@dimen/margin_medium"
                 android:layout_marginRight="@dimen/margin_medium_2"
                 android:layout_alignParentBottom="true"
-                android:text="View details"
+                android:text="@string/view_details"
                 android:textColor="@color/accent" />
 
 
